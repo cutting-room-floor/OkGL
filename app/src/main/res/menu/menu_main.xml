@@ -2,8 +2,20 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".MainActivity">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
+    <item android:id="@+id/menuItemImageDemo"
+          android:title="@string/demoImage"
           android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menuItemFontDemo"
+          android:title="@string/demoFont"
+          android:orderInCategory="200"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menuItemStylesDemo"
+          android:title="@string/demoStyles"
+          android:orderInCategory="300"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menuItemProtoBufDemo"
+          android:title="@string/demoProtoBuf"
+          android:orderInCategory="400"
           app:showAsAction="never"/>
 </menu>

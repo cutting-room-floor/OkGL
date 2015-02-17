@@ -1,6 +1,7 @@
 package com.mapbox.okgl;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +35,23 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        Fragment newFragment = null;
+        switch (id) {
+            case R.id.menuItemImageDemo:
+                newFragment = new ImageFragment();
+                break;
+            case R.id.menuItemFontDemo:
+                newFragment = new FontFragment();
+                break;
+            case R.id.menuItemStylesDemo:
+                newFragment = new StylesFragment();
+                break;
+            case R.id.menuItemProtoBufDemo:
+                newFragment = new ProtoBufFragment();
+                break;
+        }
+        if (newFragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
             return true;
         }
 

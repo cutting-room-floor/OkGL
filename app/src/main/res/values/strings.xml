@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">OkGL</string>
-    <string name="action_settings">Settings</string>
+    <string name="demoImage">Image</string>
+    <string name="demoFont">Font</string>
+    <string name="demoStyles">Styles</string>
+    <string name="demoProtoBuf">ProtoBuf</string>
 
 </resources>
