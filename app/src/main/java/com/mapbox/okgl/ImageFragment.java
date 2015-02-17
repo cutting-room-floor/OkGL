@@ -1,11 +1,12 @@
 package com.mapbox.okgl;
 
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,8 +62,10 @@ public class ImageFragment extends Fragment {
                 uiHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        BitmapDrawable bd = new BitmapDrawable(getResources(), body.byteStream());
-                        imageView.setImageDrawable(bd);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inDensity = DisplayMetrics.DENSITY_DEFAULT;
+                        options.inTargetDensity = getResources().getDisplayMetrics().densityDpi;
+                        imageView.setImageBitmap(BitmapFactory.decodeStream(body.byteStream(), null, options));
                     }
                 });
             }
