@@ -90,6 +90,7 @@ public class FontFragment extends Fragment {
                         @Override
                         public void run() {
                             demoTextView.setTypeface(typeface);
+                            demoTextView.setTextSize(28);
                         }
                     });
 
