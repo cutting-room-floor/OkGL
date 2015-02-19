@@ -10,6 +10,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ProtoBufDemo"/>
+        android:text="ProtoBuf Demo"
+        android:id="@+id/textView"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/controlButton"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
