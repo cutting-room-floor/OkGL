@@ -6,5 +6,7 @@
     <string name="demoFont">Font</string>
     <string name="demoStyles">Styles</string>
     <string name="demoProtoBuf">ProtoBuf</string>
+    <string name="startDownload">Start Download</string>
+    <string name="cancelDownload">Cancel Download</string>
 
 </resources>

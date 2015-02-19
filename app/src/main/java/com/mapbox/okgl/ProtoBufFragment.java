@@ -22,8 +22,27 @@ public class ProtoBufFragment extends Fragment {
 
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         controlButton = (Button) view.findViewById(R.id.controlButton);
+        controlButton.setOnClickListener(new ControlButtonClickListener());
+
+        progressBar.setVisibility(View.INVISIBLE);
 
         return view;
     }
 
+
+    private class ControlButtonClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+
+            if (controlButton.getText().equals(getString(R.string.startDownload))) {
+                progressBar.setVisibility(View.VISIBLE);
+                controlButton.setText(R.string.cancelDownload);
+
+            } else if (controlButton.getText().equals(getString(R.string.cancelDownload))) {
+                progressBar.setVisibility(View.INVISIBLE);
+                controlButton.setText(R.string.startDownload);
+            }
+        }
+    }
 }
