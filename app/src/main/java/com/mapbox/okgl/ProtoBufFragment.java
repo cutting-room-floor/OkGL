@@ -49,7 +49,15 @@ public class ProtoBufFragment extends Fragment {
 
         final Handler uiHandler = new Handler(Looper.getMainLooper());
 
-        Request request = new Request.Builder().url("https://s3.amazonaws.com/metro-extracts.mapzen.com/madison_wisconsin.osm.pbf").build();
+        try {
+            if (client.getCache() != null) {
+                client.getCache().evictAll();
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "Error clearing cache: " + e.toString());
+        }
+
+        Request request = new Request.Builder().url("https://s3.amazonaws.com/metro-extracts.mapzen.com/madison_wisconsin.osm.pbf").tag("DL").build();
 
         call = client.newCall(request);
 
@@ -84,6 +92,16 @@ public class ProtoBufFragment extends Fragment {
 
     }
 
+    private void cancelDownload() {
+        if (call != null) {
+            client.cancel("DL");
+            Log.i(TAG, "cancelDownload() called.  status = '" + call.isCanceled() + "'");
+            Toast.makeText(getActivity(), "cancelDownload() called.  status = '" + call.isCanceled() + "'", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.i(TAG, "call is null, so can't cancel.");
+        }
+    }
+
     private class ControlButtonClickListener implements View.OnClickListener {
 
         @Override
@@ -96,6 +114,7 @@ public class ProtoBufFragment extends Fragment {
             } else if (controlButton.getText().equals(getString(R.string.cancelDownload))) {
                 progressBar.setVisibility(View.INVISIBLE);
                 controlButton.setText(R.string.startDownload);
+                cancelDownload();
             }
         }
     }
